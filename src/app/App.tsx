@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { supabase } from '../shared/lib/supabase';
 import MainPage from '../pages/MainPage';
+import MainLayout from './layouts/MainLayout';
+import InfoPage from '../pages/InfoPage';
+import ProjectsPage from '../pages/ProjectsPage';
+import TeamPage from '../pages/TeamPage';
 
 function App() {
   useEffect(() => {
@@ -12,7 +16,13 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/info" element={<InfoPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/team" element={<TeamPage />} />
+      </Route>
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
