@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Header from '../../widgets/Header';
 import Footer from '../../widgets/Footer';
-import ContactModal from '../../widgets/ContactModal';
 import CursorStar from '../../widgets/CursorStar';
 
 const LayoutContainer = styled.div`
@@ -23,18 +21,15 @@ const Content = styled.main`
 `;
 
 function MainLayout() {
-  const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
     <LayoutContainer>
       <CursorStar />
-      <Header onContactClick={() => setIsContactOpen(true)} />
+      <Header />
       <Content>
         <Outlet />
       </Content>
       <Footer />
-      {/* Модалка временно оставлена для переиспользования в будущем; можно удалить, когда решим точно */}
-      <ContactModal isOpen={false} onClose={() => setIsContactOpen(false)} />
     </LayoutContainer>
   );
 }
