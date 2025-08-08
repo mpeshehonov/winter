@@ -33,7 +33,8 @@ function MainLayout() {
         <Outlet />
       </Content>
       <Footer />
-      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      {/* Модалка временно оставлена для переиспользования в будущем; можно удалить, когда решим точно */}
+      <ContactModal isOpen={false} onClose={() => setIsContactOpen(false)} />
     </LayoutContainer>
   );
 }

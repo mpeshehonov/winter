@@ -2,10 +2,6 @@ import styled from '@emotion/styled';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from '../../shared/ui/Logo';
 
-type Props = {
-  onContactClick: () => void;
-};
-
 const HeaderContainer = styled.header`
   width: 100%;
   padding: 0.75rem 1rem;
@@ -67,16 +63,9 @@ const NavItem = styled(NavLink)`
   &.active { color: #fff; text-decoration: underline; }
 `;
 
-const NavButton = styled.button`
-  background: transparent;
-  border: none;
-  color: rgba(255,255,255,0.85);
-  font-size: 14px;
-  cursor: pointer;
-  padding: 0;
-`;
+// button-стиль больше не используется; оставим NavItem-ссылки
 
-function Header({ onContactClick }: Props) {
+function Header() {
 
   return (
     <HeaderContainer>
@@ -88,7 +77,7 @@ function Header({ onContactClick }: Props) {
       </BrandLink>
 
       <Nav>
-        <NavButton onClick={onContactClick}>Связь</NavButton>
+        <NavItem to="/contact">Связь</NavItem>
         <NavItem to="/info">Инфо</NavItem>
         <NavItem to="/projects">Проекты</NavItem>
         <NavItem to="/team">Команда</NavItem>
