@@ -12,7 +12,7 @@ function MainPage() {
   return (
     <MainContent>
       <div>
-        <h1>КРУЖИМСЯ ЗИМА</h1>
+        <h1>КРУЖИМСЯ. ЗИМА</h1>
         <p>Организуем современные события</p>
       </div>
     </MainContent>

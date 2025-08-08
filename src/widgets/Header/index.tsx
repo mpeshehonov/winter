@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useMemo } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import Logo from '../../shared/ui/Logo';
 
 type Props = {
@@ -24,19 +23,36 @@ const LeftNote = styled.div`
   opacity: 0.85;
 `;
 
-const LogoLink = styled(Link)`
-  color: #fff;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-`;
-
-const Brand = styled.div`
+const BrandLink = styled(Link)`
+  justify-self: center;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  justify-self: center;
+  text-decoration: none;
+  color: #fff;
+  line-height: 1;
+
+  /* Кликабельная зона */
+  padding: 6px 8px;
+  border-radius: 10px;
+  -webkit-tap-highlight-color: transparent;
+
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+  @media (prefers-reduced-motion: reduce) { transition: none; }
+  @media (hover: hover) and (pointer: fine) { &:hover { opacity: 0.9; } }
+  &:active { opacity: 0.85; transform: translateY(0.5px); }
+  &:focus-visible { outline: 2px solid rgba(255,255,255,0.95); outline-offset: 2px; }
+
+  @media (pointer: coarse) { padding: 10px 12px; }
 `;
+
+const BrandText = styled.span`
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+`;
+
+// убрали отдельный контейнер, вся кликабельная область — один BrandLink
 
 const Nav = styled.nav`
   display: inline-flex;
@@ -61,26 +77,15 @@ const NavButton = styled.button`
 `;
 
 function Header({ onContactClick }: Props) {
-  const location = useLocation();
-
-  const title = useMemo(() => {
-    if (location.pathname === '/') return 'Кружимся. Зима';
-    if (location.pathname.startsWith('/info')) return 'Инфо';
-    if (location.pathname.startsWith('/projects')) return 'Проекты';
-    if (location.pathname.startsWith('/team')) return 'Команда';
-    return 'Зима';
-  }, [location.pathname]);
 
   return (
     <HeaderContainer>
       <LeftNote>Студия объединения</LeftNote>
 
-      <Brand>
-        <LogoLink to="/" aria-label="На главную">
-          <Logo size={12} color="#fff" />
-        </LogoLink>
-        <span style={{ opacity: 0.75 }}>{title}</span>
-      </Brand>
+      <BrandLink to="/" aria-label="На главную: КРУЖИМСЯ. ЗИМА">
+        <Logo size={12} color="currentColor" />
+        <BrandText>КРУЖИМСЯ. ЗИМА</BrandText>
+      </BrandLink>
 
       <Nav>
         <NavButton onClick={onContactClick}>Связь</NavButton>
