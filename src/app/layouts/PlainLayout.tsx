@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 import { Outlet } from 'react-router-dom';
+import BackgroundVideo from '../../widgets/BackgroundVideo';
 
 const Wrapper = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: #000;
+  background: transparent;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -13,6 +14,7 @@ const Wrapper = styled.div`
 function PlainLayout() {
   return (
     <Wrapper>
+      <BackgroundVideo />
       <Outlet />
     </Wrapper>
   );

@@ -3,13 +3,14 @@ import styled from '@emotion/styled';
 import Header from '../../widgets/Header';
 import Footer from '../../widgets/Footer';
 import CursorStar from '../../widgets/CursorStar';
+import BackgroundVideo from '../../widgets/BackgroundVideo';
 
 const LayoutContainer = styled.div`
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #000; /* базовый тёмный фон */
+  background-color: transparent;
   color: #fff;
 `;
 
@@ -24,6 +25,7 @@ function MainLayout() {
 
   return (
     <LayoutContainer>
+      <BackgroundVideo />
       <CursorStar />
       <Header />
       <Content>

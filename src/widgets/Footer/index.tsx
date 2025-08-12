@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 const FooterContainer = styled.footer`
   width: 100%;
   padding: 0.75rem 1rem;
-  background-color: #000;
+  background-color: rgba(0,0,0,0.55);
   color: #fff;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
