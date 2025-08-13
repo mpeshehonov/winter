@@ -4,13 +4,13 @@ import Header from '../../widgets/Header';
 import Footer from '../../widgets/Footer';
 import CursorStar from '../../widgets/CursorStar';
 
-const LayoutContainer = styled.div<{ backgroundColor?: string }>`
+const LayoutContainer = styled.div<{ backgroundColor?: string; variant?: 'default' | 'inverted' }>`
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: ${({ backgroundColor }) => backgroundColor ?? 'transparent'};
-  color: #fff;
+  color: ${({ variant }) => (variant === 'inverted' ? '#000' : '#fff')};
 `;
 
 const Content = styled.main`
@@ -26,7 +26,7 @@ type MainLayoutProps = { variant?: LayoutVariant, backgroundColor?: string };
 function MainLayout({ variant = 'default', backgroundColor }: MainLayoutProps) {
 
   return (
-    <LayoutContainer backgroundColor={backgroundColor}>
+    <LayoutContainer backgroundColor={backgroundColor} variant={variant}>
       <CursorStar />
       <Header variant={variant === 'inverted' ? 'inverted' : 'default'} />
       <Content>

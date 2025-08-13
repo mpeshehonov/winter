@@ -17,7 +17,7 @@ const VideoVisibility = styled.div<{ hidden?: boolean }>`
 
 function App() {
   const location = useLocation();
-  const isInfo = location.pathname === '/info';
+  const isInverted = location.pathname === '/info' || location.pathname === '/projects';
   useEffect(() => {
     supabase.from('members').select('*').then(({ data }) => {
       console.log('Test Supabase data:', data);
@@ -26,17 +26,17 @@ function App() {
 
   return (
     <>
-      <VideoVisibility hidden={isInfo}>
+      <VideoVisibility hidden={isInverted}>
         <BackgroundVideo />
       </VideoVisibility>
       <Routes>
         <Route element={<MainLayout variant="default" />}> 
           <Route path="/" element={<MainPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/team" element={<TeamPage />} />
         </Route>
         <Route element={<MainLayout variant="inverted" backgroundColor="#ffffff" />}> 
           <Route path="/info" element={<InfoPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
         </Route>
         <Route element={<PlainLayout />}>
           <Route path="/contact" element={<ContactPage />} />
