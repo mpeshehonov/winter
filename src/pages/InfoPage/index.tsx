@@ -1,33 +1,47 @@
 import styled from '@emotion/styled';
+import aboutImage from '../../shared/assets/about.png';
 
-const Wrapper = styled.section`
+const Page = styled.section`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 `;
 
-const Title = styled.h1`
-  font-size: 18px;
+const Card = styled.div`
+  height: 401px;
+  width: 696px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url(${aboutImage});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+
+const Text = styled.p`
+  width: 70%;
+  margin: 0;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  margin: 0 0 1rem;
-`;
-
-const Paragraph = styled.p`
-  margin: 0 0 0.75rem;
-  color: rgba(255,255,255,0.9);
+  text-transform: uppercase;
 `;
 
 function InfoPage() {
   return (
-    <Wrapper>
-      <Title>Инфо</Title>
-      <Paragraph>
-        Делаем digital‑продукты от идеи до реализации. Здесь может быть текст из макета: подход,
-        методология, перечень направлений.
-      </Paragraph>
-    </Wrapper>
+    <Page>
+      <Card>
+        <Text>
+          Зима — не конец, а точка отсчета. Мы не боимся меняться, кружиться в потоке, чтобы в итоге создать нечто новое. Без лишнего шума, но с глубоким смыслом.
+        </Text>
+      </Card>
+    </Page>
   );
 }
 

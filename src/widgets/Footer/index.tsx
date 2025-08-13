@@ -1,17 +1,20 @@
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 
-const FooterContainer = styled.footer`
+type FooterVariant = 'default' | 'inverted';
+type FooterProps = { variant?: FooterVariant };
+
+const FooterContainer = styled.footer<{ variant?: FooterVariant }>`
   width: 100%;
   padding: 0.75rem 1rem;
-  background-color: rgba(0,0,0,0.55);
-  color: #fff;
+  background-color: ${({ variant }) => variant === 'inverted' ? 'transparent' : 'rgba(0,0,0,0.55)'};
+  color: ${({ variant }) => variant === 'inverted' ? '#000' : '#fff'};
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
 `;
 
-function Footer() {
+function Footer({ variant = 'default' }: FooterProps) {
   const [time, setTime] = useState('');
   useEffect(() => {
     const update = () => setTime(new Date().toLocaleTimeString('ru-RU'));
@@ -21,7 +24,7 @@ function Footer() {
   }, []);
 
   return (
-    <FooterContainer>
+    <FooterContainer variant={variant}>
       <span style={{ justifySelf: 'start' }}>Русский / En</span>
       <span style={{ justifySelf: 'center' }}>© 2025</span>
       <span style={{ opacity: 0.7, justifySelf: 'end' }}>({time})</span>
