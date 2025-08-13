@@ -8,6 +8,7 @@ import InfoPage from '../pages/InfoPage';
 import ProjectsPage from '../pages/ProjectsPage';
 import TeamPage from '../pages/TeamPage';
 import ContactPage from '../pages/ContactPage';
+import BackgroundVideo from '../widgets/BackgroundVideo';
 
 function App() {
   useEffect(() => {
@@ -17,18 +18,21 @@ function App() {
   }, []);
 
   return (
-    <Routes>
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/info" element={<InfoPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/team" element={<TeamPage />} />
-      </Route>
-      <Route element={<PlainLayout />}>
-        <Route path="/contact" element={<ContactPage />} />
-      </Route>
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <>
+      <BackgroundVideo />
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/info" element={<InfoPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/team" element={<TeamPage />} />
+        </Route>
+        <Route element={<PlainLayout />}>
+          <Route path="/contact" element={<ContactPage />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   );
 }
 

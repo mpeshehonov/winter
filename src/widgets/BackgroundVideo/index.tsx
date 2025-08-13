@@ -27,10 +27,12 @@ function BackgroundVideo() {
   return (
     <FixedVideoBackground aria-hidden>
       <Iframe
-        src="https://kinescope.io/embed/84EcYdn6t1suuNobaGfw3e"
+        src="https://kinescope.io/embed/84EcYdn6t1suuNobaGfw3e?autoplay=1&muted=1&loop=1&controls=0&background=1&playsinline=1"
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
         allowFullScreen
-        loading="lazy"
+        loading="eager"
+        referrerPolicy="no-referrer-when-downgrade"
+        tabIndex={-1}
         title="Background video"
       />
     </FixedVideoBackground>
