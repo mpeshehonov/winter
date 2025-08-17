@@ -10,6 +10,9 @@ const Page = styled.section`
   padding: 24px; /* поля страницы */
   display: grid;
   place-items: center; /* центрирование карточки */
+  @media (max-width: 560px) {
+    padding: 16px 12px 72px; /* нижний отступ под фикс-кнопку */
+  }
 `;
 
 const TopBar = styled.div`
@@ -23,6 +26,7 @@ const TopBar = styled.div`
 const PhoneText = styled.div`
   color: rgba(0,0,0,0.7);
   font-size: 16px;
+  @media (max-width: 480px) { font-size: 14px; }
 `;
 
 const FormCard = styled.div`
@@ -34,6 +38,10 @@ const FormCard = styled.div`
   color: #000;
   border-radius: 0;
   padding: 24px;
+  @media (max-width: 560px) {
+    padding: 16px;
+    row-gap: 28px;
+  }
 `;
 
 const InlineForm = styled.form`
@@ -76,6 +84,8 @@ const Input = styled.input<{ $invalid: boolean }>`
   &::placeholder {
     color: rgba(0,0,0,0.45);
   }
+
+  @media (max-width: 560px) { font-size: 22px; }
 `;
 
 const Submit = styled.button`
@@ -97,6 +107,7 @@ const Submit = styled.button`
   }
   &:active { opacity: .9; }
   &:disabled { opacity: .45; cursor: not-allowed; }
+  @media (max-width: 560px) { font-size: 22px; }
 `;
 
 const Helper = styled.div`
@@ -112,6 +123,11 @@ const BottomBar = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   align-items: end;
   color: rgba(0,0,0,0.7);
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+    text-align: center;
+  }
 `;
 
 const BottomButton = styled.button`
@@ -127,6 +143,11 @@ const BottomButton = styled.button`
   padding: 18px 16px;
   font-size: 16px;
   font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  @supports (backdrop-filter: blur(6px)) {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(6px);
+  }
 `;
 
 const BottomLeft = styled.div`

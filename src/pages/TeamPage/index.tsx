@@ -13,6 +13,9 @@ const Page = styled.section`
     grid-template-columns: 1fr;
     gap: 28px;
   }
+  @media (max-width: 560px) {
+    padding: 1.5rem 1rem 2rem;
+  }
 `;
 
 const LeftTitle = styled.h1`
@@ -23,6 +26,8 @@ const LeftTitle = styled.h1`
   text-transform: uppercase;
   letter-spacing: 0.01em;
   color: #000;
+  @media (max-width: 700px) { font-size: 26px; }
+  @media (max-width: 480px) { font-size: 22px; }
 `;
 
 const RightCol = styled.div`
@@ -30,6 +35,7 @@ const RightCol = styled.div`
   flex-direction: column;
   gap: 20px;
   min-height: 60vh;
+  @media (max-width: 560px) { min-height: auto; }
 `;
 
 const SectionTitle = styled.h2`
@@ -38,6 +44,7 @@ const SectionTitle = styled.h2`
   text-transform: uppercase;
   font-weight: 600;
   color: #000;
+  @media (max-width: 560px) { margin-bottom: 16px; }
 `;
 
 const RolesList = styled.ul`
@@ -50,6 +57,8 @@ const RolesList = styled.ul`
   text-transform: uppercase;
   color: #000;
   font-weight: 600;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  @media (max-width: 560px) { grid-template-columns: 1fr; }
 `;
 
 const BottomNote = styled.p`
@@ -60,6 +69,7 @@ const BottomNote = styled.p`
   text-transform: uppercase;
   color: #000;
   font-weight: 600;
+  @media (max-width: 560px) { margin-top: 8px; }
 `;
 
 function TeamPage() {

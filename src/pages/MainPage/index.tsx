@@ -19,6 +19,11 @@ const Card = styled.div`
   border-radius: 0; /* острые углы */
   overflow: hidden; /* блюр не выходит за пределы, углы остаются острыми */
   isolation: isolate; /* корректный стековый контекст для подложки */
+
+  @media (max-width: 720px) {
+    padding: 16px;
+    row-gap: 28px;
+  }
 `;
 
 const BlurUnderlay = styled.div`
@@ -44,6 +49,7 @@ const TopBar = styled.div`
 const PhoneText = styled.div`
   color: rgba(0,0,0,0.7);
   font-size: 16px;
+  @media (max-width: 480px) { font-size: 14px; }
 `;
 
 const CenterStack = styled.div`
@@ -63,6 +69,8 @@ const CenterLine = styled.div`
   font-weight: 700;
   letter-spacing: 0.02em;
   text-align: center;
+  @media (max-width: 600px) { font-size: 22px; }
+  @media (max-width: 400px) { font-size: 20px; }
 `;
 
 const BottomBar = styled.div`
@@ -73,16 +81,25 @@ const BottomBar = styled.div`
   align-items: end;
   color: rgba(0,0,0,0.7);
   z-index: 1;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+    text-align: center;
+  }
 `;
 
 const BottomLeft = styled.div`
   justify-self: start;
+  @media (max-width: 600px) { justify-self: center; }
 `;
 const BottomCenter = styled.div`
   justify-self: center;
+  @media (max-width: 600px) { justify-self: center; }
 `;
 const BottomRight = styled.div`
   justify-self: end;
+  @media (max-width: 600px) { justify-self: center; }
 `;
 
 function MainPage() {

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
 import Logo from '../../shared/ui/Logo';
 
 type HeaderVariant = 'default' | 'inverted';
@@ -14,6 +15,12 @@ const HeaderContainer = styled.header<{ variant?: HeaderVariant }>`
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   column-gap: 16px;
+  position: relative;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr auto;
+    row-gap: 8px;
+  }
 `;
 
 const LeftNote = styled.div`
@@ -57,6 +64,10 @@ const Nav = styled.nav`
   display: inline-flex;
   gap: 18px;
   justify-self: end;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
 const NavItem = styled(NavLink)<{ variant?: HeaderVariant }>`
@@ -67,9 +78,49 @@ const NavItem = styled(NavLink)<{ variant?: HeaderVariant }>`
   &:hover { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 1px; }
 `;
 
-// button-стиль больше не используется; оставим NavItem-ссылки
+const ToggleButton = styled.button<{ variant?: HeaderVariant }>`
+  display: none;
+  justify-self: end;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+
+  @media (max-width: 640px) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-color: ${({ variant }) => variant === 'inverted' ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.25)'};
+  }
+`;
+
+const MobileNav = styled.div<{ variant?: HeaderVariant }>`
+  position: absolute;
+  top: 100%;
+  right: 8px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid ${({ variant }) => variant === 'inverted' ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.18)'};
+  background: ${({ variant }) => variant === 'inverted' ? '#fff' : 'rgba(0,0,0,0.85)'};
+  color: ${({ variant }) => variant === 'inverted' ? '#000' : '#fff'};
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 200px;
+  z-index: 20;
+
+  @media (max-width: 640px) {
+    display: flex;
+  }
+`;
 
 function Header({ variant = 'default' }: HeaderProps) {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <HeaderContainer variant={variant}>
@@ -86,6 +137,25 @@ function Header({ variant = 'default' }: HeaderProps) {
         <NavItem to="/projects" variant={variant}>Проекты</NavItem>
         <NavItem to="/team" variant={variant}>Команда</NavItem>
       </Nav>
+
+      <ToggleButton
+        variant={variant}
+        aria-label="Открыть меню"
+        aria-expanded={menuOpen}
+        aria-controls="mobile-nav"
+        onClick={() => setMenuOpen((v) => !v)}
+      >
+        Меню ✱
+      </ToggleButton>
+
+      {menuOpen && (
+        <MobileNav id="mobile-nav" role="menu" variant={variant}>
+          <NavItem to="/contact" variant={variant} onClick={() => setMenuOpen(false)}>Связь</NavItem>
+          <NavItem to="/info" variant={variant} onClick={() => setMenuOpen(false)}>Инфо</NavItem>
+          <NavItem to="/projects" variant={variant} onClick={() => setMenuOpen(false)}>Проекты</NavItem>
+          <NavItem to="/team" variant={variant} onClick={() => setMenuOpen(false)}>Команда</NavItem>
+        </MobileNav>
+      )}
     </HeaderContainer>
   );
 }

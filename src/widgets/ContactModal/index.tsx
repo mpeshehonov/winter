@@ -17,13 +17,14 @@ const ModalOverlay = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 16px;
 `;
 
 const ModalContent = styled(motion.div)`
   background: white;
-  padding: 2rem;
+  padding: 1.25rem;
   border-radius: 8px;
-  max-width: 400px;
+  max-width: min(92vw, 420px);
   width: 100%;
 `;
 

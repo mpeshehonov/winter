@@ -12,6 +12,35 @@ const FooterContainer = styled.footer<{ variant?: FooterVariant }>`
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 6px;
+  }
+`;
+
+const Left = styled.span`
+  justify-self: start;
+`;
+
+const Center = styled.span`
+  justify-self: center;
+
+  @media (max-width: 640px) {
+    grid-column: 1 / 2;
+    justify-self: start;
+    opacity: 0.9;
+  }
+`;
+
+const Right = styled.span`
+  justify-self: end;
+  opacity: 0.7;
+
+  @media (max-width: 640px) {
+    grid-column: 2 / 3;
+    justify-self: end;
+  }
 `;
 
 function Footer({ variant = 'default' }: FooterProps) {
@@ -25,9 +54,9 @@ function Footer({ variant = 'default' }: FooterProps) {
 
   return (
     <FooterContainer variant={variant}>
-      <span style={{ justifySelf: 'start' }}>Русский / En</span>
-      <span style={{ justifySelf: 'center' }}>© 2025</span>
-      <span style={{ opacity: 0.7, justifySelf: 'end' }}>({time})</span>
+      <Left>Русский / En</Left>
+      <Center>© 2025</Center>
+      <Right>({time})</Right>
     </FooterContainer>
   );
 }

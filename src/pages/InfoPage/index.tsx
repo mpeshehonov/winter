@@ -13,8 +13,8 @@ const Page = styled.section`
 `;
 
 const Card = styled.div`
-  height: 401px;
-  width: 696px;
+  height: clamp(260px, 44vw, 401px);
+  width: clamp(300px, 92vw, 696px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,9 +26,9 @@ const Card = styled.div`
 `;
 
 const Text = styled.p`
-  width: 70%;
+  width: min(90%, 540px);
   margin: 0;
-  font-size: 14px;
+  font-size: clamp(12px, 2.5vw, 14px);
   font-weight: 600;
   text-transform: uppercase;
 `;

@@ -16,6 +16,9 @@ const Grid = styled.div`
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const Card = styled.article`
@@ -28,6 +31,7 @@ const Card = styled.article`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 480px) { border-radius: 6px; }
 `;
 
 const Thumb = styled.img`
@@ -49,6 +53,11 @@ const CaptionBar = styled.div`
   font-size: 12px;
   color: #666;
   background: rgba(255,255,255,0.85);
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+    text-align: center;
+  }
 `;
 
 const Title = styled.h1`
@@ -56,6 +65,7 @@ const Title = styled.h1`
   font-size: 28px;
   line-height: 1.1;
   color: #000;
+  @media (max-width: 560px) { font-size: 22px; }
 `;
 
 function ProjectsPage() {
