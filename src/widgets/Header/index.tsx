@@ -27,6 +27,14 @@ const LeftNote = styled.div`
   justify-self: start;
   font-size: 14px;
   opacity: 0.85;
+
+  @media (max-width: 640px) {
+    grid-column: 2 / 3;
+    grid-row: 2;
+    justify-self: end;
+    font-size: 12px;
+    opacity: 0.9;
+  }
 `;
 
 const BrandLink = styled(Link)`
@@ -50,6 +58,11 @@ const BrandLink = styled(Link)`
   &:focus-visible { outline: 1px solid currentColor; outline-offset: 1px; }
 
   @media (pointer: coarse) { padding: 10px 12px; }
+  @media (max-width: 640px) {
+    grid-column: 2 / 3;
+    grid-row: 1;
+    justify-self: end;
+  }
 `;
 
 const BrandText = styled.span`
@@ -95,6 +108,9 @@ const ToggleButton = styled.button<{ variant?: HeaderVariant }>`
     align-items: center;
     gap: 8px;
     border-color: ${({ variant }) => variant === 'inverted' ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.25)'};
+    grid-column: 1 / 2;
+    grid-row: 1;
+    justify-self: start;
   }
 `;
 
@@ -116,6 +132,8 @@ const MobileNav = styled.div<{ variant?: HeaderVariant }>`
 
   @media (max-width: 640px) {
     display: flex;
+    right: auto;
+    left: 8px;
   }
 `;
 
@@ -140,12 +158,16 @@ function Header({ variant = 'default' }: HeaderProps) {
 
       <ToggleButton
         variant={variant}
-        aria-label="Открыть меню"
+        aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
         aria-expanded={menuOpen}
         aria-controls="mobile-nav"
         onClick={() => setMenuOpen((v) => !v)}
       >
-        Меню ✱
+        {menuOpen ? (
+          <Logo size={12} color="currentColor" />
+        ) : (
+          <span aria-hidden>☰</span>
+        )}
       </ToggleButton>
 
       {menuOpen && (

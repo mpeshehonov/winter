@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 const Wrapper = styled.div`
   width: 100%;
-  min-height: 100vh;
+  min-height: 100svh;
   background: transparent;
   color: #fff;
   display: flex;

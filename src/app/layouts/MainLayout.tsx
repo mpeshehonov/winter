@@ -6,7 +6,7 @@ import CursorStar from '../../widgets/CursorStar';
 
 const LayoutContainer = styled.div<{ backgroundColor?: string; variant?: 'default' | 'inverted' }>`
   width: 100%;
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   background-color: ${({ backgroundColor }) => backgroundColor ?? 'transparent'};

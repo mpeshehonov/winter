@@ -31,6 +31,7 @@ const Text = styled.p`
   font-size: clamp(12px, 2.5vw, 14px);
   font-weight: 600;
   text-transform: uppercase;
+  color: #fff;
 `;
 
 function InfoPage() {
